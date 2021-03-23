@@ -9,3 +9,6 @@ java 实现 查询生日在Π中的位置
 1.  进入项目根目录 CMD 命令 编译java文件 `javac -encoding utf-8 BirthdayInPi.java`
 2.  CMD 命令 运行 `java BirthdayInPi`
 3.  根据提示进行查询
+
+#### 使用截图
+![WAI](https://gitee.com/roja/my-pic-go/raw/master/pic/birthday_in_pi.png)
