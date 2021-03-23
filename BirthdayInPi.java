@@ -29,7 +29,7 @@ public class BirthdayInPi {
         long piSite = 0;
 
         int byteRead = 0;
-        byte[] tempBytes = new byte[100];
+        byte[] tempBytes = new byte[80000];
         InputStream in = new FileInputStream(piFile);
 
         while ((byteRead = in.read(tempBytes)) != -1) {
