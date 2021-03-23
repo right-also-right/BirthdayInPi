@@ -1,5 +1,3 @@
-package basic;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -21,9 +19,11 @@ public class BirthdayInPi {
     }
 
     private static void doFind(String filePath) throws Exception {
-        System.out.println("/n输入想查询的字符串:");
+        System.out.println("\n输入想查询的字符串:");
         String inputStr = new Scanner(System.in).next().trim();
         byte[] inputBytes = inputStr.getBytes();
+
+        long findStartTimeMillis = System.currentTimeMillis();
 
         File piFile = new File(filePath);
         long piSite = 0;
@@ -45,6 +45,7 @@ public class BirthdayInPi {
 
                 if (inputBytes.length <= passTime) {
                     System.out.println("在pi小数点后" + (piSite - 2) + "位");
+                    System.out.println("耗时: " + (System.currentTimeMillis() - findStartTimeMillis) + "毫秒");
                     // 找到之后不在循环
                     return;
                 }
@@ -60,5 +61,7 @@ public class BirthdayInPi {
             // 回溯 inputBytes.length - 1 位 避免 bytes 100 位 与下一此读取首尾相接部分字符匹配产生的问题
             in.skip(-inputBytes.length + 1);
         }
+
+        System.out.println("未在" + (piSite - 2) + "位前查询到指定字符串");
     }
 }
