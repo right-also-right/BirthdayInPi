@@ -14,23 +14,24 @@ public class BirthdayInPi {
         System.out.println("输入pi文件目录(含文件名):");
         String filePath = new Scanner(System.in).useDelimiter("\n").next().trim();
         while (true) {
-            doFind(filePath);
+            File piFile = new File(filePath);
+            InputStream in = new FileInputStream(piFile);
+            doFind(in);
+            in.close();
         }
     }
 
-    private static void doFind(String filePath) throws Exception {
+    private static void doFind(InputStream in) throws Exception {
         System.out.println("\n输入想查询的字符串:");
         String inputStr = new Scanner(System.in).next().trim();
         byte[] inputBytes = inputStr.getBytes();
 
         long findStartTimeMillis = System.currentTimeMillis();
 
-        File piFile = new File(filePath);
         long piSite = 0;
 
         int byteRead = 0;
-        byte[] tempBytes = new byte[80000];
-        InputStream in = new FileInputStream(piFile);
+        byte[] tempBytes = new byte[8192];
 
         while ((byteRead = in.read(tempBytes)) != -1) {
             for (int i = 0; i < byteRead; i++) {
